@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            background-color: #f9f9f9;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Formulario de contacto</h2>
+
+        <!-- Formulario de contacto -->
+        <form action="https://formsubmit.co/TU_CORREO@gmail.com" method="POST" onsubmit="mostrarGracias()">
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Tu correo" required>
+            <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+
+            <!-- Para redirigir después del envío -->
+            <input type="hidden" name="_next" value="gracias.html">
+
+            <!-- Para evitar SPAM -->
+            <input type="hidden" name="_captcha" value="false">
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <!-- Mensaje de agradecimiento -->
+        <div class="thank-you-message">
+            Gracias por enviar tus datos. ¡Te responderemos pronto!
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar el mensaje de "Gracias"
+        function mostrarGracias() {
+            event.preventDefault(); // Evitar el comportamiento por defecto de enviar el formulario
+            document.querySelector('form').style.display = 'none';  // Ocultar el formulario
+            document.querySelector('.thank-you-message').style.display = 'block';  // Mostrar el mensaje
+        }
+    </script>
+
+</body>
+</html>
